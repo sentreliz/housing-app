@@ -11,6 +11,7 @@ const SearchBar = ({ match }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [debouncedText, setDebouncedText] = useState(searchTerm)
     const [searchPath, setSearchPath] = useState("/housing")
+    const [pathLength, setPathLength] = useState(0);
 
     useEffect(() => {
         const timerId = setTimeout(() => {
@@ -20,6 +21,11 @@ const SearchBar = ({ match }) => {
             clearTimeout(timerId);
         };
     }, [searchTerm]);
+
+    useEffect(()=> {
+        let tempPathLength = window.location.pathname.split('/').filter((x) => x.length!==0).length;
+        setPathLength(tempPathLength);
+    })
 
     useEffect(() => {
         const searchHousing = async () => {
@@ -59,11 +65,12 @@ const SearchBar = ({ match }) => {
                 id="standard-textarea"
                 label="Housing Search"
                 placeholder="Seattle, WA"
-                multiline
                 variant="outlined"
                 value={searchTerm}
+                InputLabelProps={{
+                    style: pathLength > 1 ? { color: '#fff' } : {color: '#000'}
+                }}
                 onChange={(e) => { setSearchTerm(e.target.value) }}
-
             />
             {renderedResults}
         </Container>

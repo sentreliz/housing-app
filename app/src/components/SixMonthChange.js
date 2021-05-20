@@ -25,9 +25,9 @@ const SixMonthChange = ({ data }) => {
 
     return (
         <div>
-            <Typography variant="subtitle1">Last 3 year % Change</Typography>
+            <Typography variant="subtitle1">Last 3-year % Change</Typography>
             <ResponsiveContainer width="100%" height={100}>
-                <BarChart width={150} height={500} data={rechartData} >
+                <BarChart width={150} height={500} data={rechartData}>
                     <XAxis dataKey="date" hide={true} />
                     <Tooltip dataKey="date" cursor={{ stroke: "#e5ffd4" }} contentStyle={{ backgroundColor: "#28303A" }} />
                     <Legend wrapperStyle={{ bottom: 5 }} />
@@ -35,7 +35,7 @@ const SixMonthChange = ({ data }) => {
                     <Bar dataKey={stName} fill="#48e8ec" />
                 </BarChart>
             </ResponsiveContainer>
-        </div >
+        </div>
     )
 
 
