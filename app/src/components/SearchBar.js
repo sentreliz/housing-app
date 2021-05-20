@@ -25,7 +25,7 @@ const SearchBar = ({ match }) => {
     useEffect(()=> {
         let tempPathLength = window.location.pathname.split('/').filter((x) => x.length!==0).length;
         setPathLength(tempPathLength);
-    })
+    }, [])
 
     useEffect(() => {
         const searchHousing = async () => {
